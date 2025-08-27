@@ -1,39 +1,77 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Сайт в разработке</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: url("bg.png") no-repeat center center;
-      background-size: cover;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      font-family: Arial, sans-serif;
-    }
-    .links {
-      margin-bottom: 40px;
-      font-size: 18px;
-      text-align: center;
-    }
-    .links a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #fff;
-      font-weight: bold;
-    }
-    .links a:hover {
-      text-decoration: underline;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Сайт в разработке</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+
+  .card h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    line-height: 1.4;
+  }
+
+  .card p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    color: #333;
+  }
+
+  .links a {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 10px;
+    background-color: #0077ff;
+    transition: background 0.3s;
+  }
+
+  .links a:hover {
+    background-color: #005fcc;
+  }
+
+  em {
+    font-style: italic;
+  }
+</style>
 </head>
 <body>
-  <div class="links">
-    <a href="https://www.instagram.com/case.creativestudio/" target="_blank">Instagram</a> |
-    <a href="mailto:hello@casecreativestudio.lv">hello@casecreativestudio.lv</a>
+
+  <div class="card">
+    <h1>Это пространство находится на <em>креативной</em> реконструкции.</h1>
+    <p>Сейчас мы обновляем сайт, чтобы он выглядел так же ярко, как наши идеи.<br>
+    А пока можно заглянуть в наш Instagram или написать на почту.</p>
+    <div class="links">
+      <a href="https://www.instagram.com/case.creativestudio/" target="_blank">Instagram</a>
+      <a href="mailto:hello@casecreativestudio.lv">hello@casecreativestudio.lv</a>
+    </div>
   </div>
+
 </body>
 </html>
+
