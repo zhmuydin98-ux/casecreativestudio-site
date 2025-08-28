@@ -1,77 +1,98 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Сайт в разработке</title>
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background: #f9f9f9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+  <meta charset="UTF-8">
+  <title>CASE Creative Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Подключим Google Fonts, если Satoshi недоступен -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #EB4D2C; /* фон */
+      font-family: 'Satoshi', 'Inter', sans-serif;
+      overflow: hidden;
+    }
 
-  .card {
-    background: #fff;
-    border-radius: 20px;
-    padding: 40px;
-    max-width: 600px;
-    width: 90%;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    text-align: center;
-  }
+    .container {
+      transform: rotate(60deg); /* поворот макета */
+      width: 1440px;
+      height: 700px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
-  .card h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    line-height: 1.4;
-  }
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #FCFAA6;
+      margin-bottom: 60px;
+    }
 
-  .card p {
-    font-size: 18px;
-    margin-bottom: 30px;
-    line-height: 1.5;
-    color: #333;
-  }
+    .title {
+      font-size: 250px;
+      font-weight: 700;
+      line-height: 110%;
+      color: #FCFAA6;
+      margin: 0 0 40px 0;
+    }
 
-  .links a {
-    display: inline-block;
-    margin: 0 10px;
-    padding: 12px 25px;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #fff;
-    border-radius: 10px;
-    background-color: #0077ff;
-    transition: background 0.3s;
-  }
+    .subtitle {
+      font-size: 35px;
+      font-weight: 500;
+      line-height: 110%;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+    }
 
-  .links a:hover {
-    background-color: #005fcc;
-  }
+    .text {
+      font-size: 25px;
+      font-weight: 500;
+      line-height: 110%;
+      color: #FFFFFF;
+      max-width: 80%;
+      margin: 0 auto 20px auto;
+    }
 
-  em {
-    font-style: italic;
-  }
-</style>
+    .links {
+      font-size: 25px;
+      font-weight: 500;
+      line-height: 110%;
+      color: #FFFFFF;
+    }
+
+    .links a {
+      color: #FFFFFF;
+      text-decoration: underline;
+      transition: opacity 0.2s;
+    }
+
+    .links a:hover {
+      opacity: 0.7;
+    }
+  </style>
 </head>
 <body>
-
-  <div class="card">
-    <h1>Это пространство находится на <em>креативной</em> реконструкции.</h1>
-    <p>Сейчас мы обновляем сайт, чтобы он выглядел так же ярко, как наши идеи.<br>
-    А пока можно заглянуть в наш Instagram или написать на почту.</p>
+  <div class="container">
+    <div class="logo">(CASE)</div>
+    <div class="title">404</div>
+    <div class="subtitle">This space is under creative construction.</div>
+    <div class="text">
+      We’re currently updating our website to make it as bright and bold as our ideas.
+    </div>
     <div class="links">
-      <a href="https://www.instagram.com/case.creativestudio/" target="_blank">Instagram</a>
-      <a href="mailto:hello@casecreativestudio.lv">hello@casecreativestudio.lv</a>
+      In the meantime, feel free to check out our 
+      <a href="https://www.instagram.com/case.creativestudio/" target="_blank">Instagram</a> 
+      or drop us an email at 
+      <a href="mailto:hello@casecreativestudio.lv">hello@casecreativestudio.lv</a>.
     </div>
   </div>
-
 </body>
 </html>
-
