@@ -13,7 +13,7 @@
     *{box-sizing:border-box}
     body{
       margin:0;
-      padding:0;
+      padding:24px 16px;
       background-color:var(--bg);
       color:var(--fg);
       font-family:'Satoshi',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
@@ -24,24 +24,54 @@
       flex-direction:column;
       text-align:center;
       position:relative;
-      padding:24px 16px;
+    }
+
+    /* Переключатель языков */
+    .lang-switch{
+      position:absolute;
+      top:calc(env(safe-area-inset-top,0px) + 12px);
+      right:16px;
+      font-size:clamp(14px,2vw,20px);
+      font-weight:500;
+      display:flex;
+      gap:10px;
+      padding:8px 10px;
+      border-radius:999px;
+      background:rgba(0,0,0,.08);
+      -webkit-tap-highlight-color:transparent;
+      z-index:2; /* поверх логотипа */
+    }
+    .lang-switch span{
+      cursor:pointer;
+      color:var(--fg);
+      padding:4px 6px;
+      border-radius:6px;
+      transition:color .2s, opacity .2s, background .2s;
+      user-select:none;
+    }
+    .lang-switch span.active{
+      color:var(--accent);
+      text-decoration:underline;
+      background:rgba(0,0,0,.12);
     }
 
     /* Логотип */
     .logo{
       position:absolute;
-      top:24px;
+      top:40px;
       left:50%;
       transform:translateX(-50%);
       font-size:clamp(18px,2.4vw,32px);
       font-weight:700;
       color:var(--accent);
       letter-spacing:0.02em;
+      z-index:1;
     }
-    /* Скобки в логотипе уменьшены */
+    /* уменьшенные скобки, подогнаны по высоте к буквам */
     .logo .parens{
-      font-size:0.8em; /* скобки становятся ниже */
-      vertical-align:middle;
+      font-size:0.85em;
+      line-height:1;
+      vertical-align:baseline;
     }
 
     /* 404 */
@@ -58,8 +88,10 @@
       max-width:1038px;
       margin:20px auto 0;
       font-size:clamp(16px,2.2vw,25px);
-      line-height:1.2;
+      line-height:1.25;
       padding:0 8px;
+      word-break:normal;
+      overflow-wrap:break-word;
     }
     .text strong{
       font-size:clamp(18px,3vw,35px);
@@ -73,63 +105,33 @@
     a:hover{opacity:.7}
     .insta-link{text-decoration:underline}
 
-    /* Переключатель языков */
-    .lang-switch{
-      position:absolute;
-      top:16px;
-      right:16px;
-      font-size:clamp(14px,2vw,20px);
-      font-weight:500;
-      display:flex;
-      gap:10px;
-      padding:8px 10px;
-      border-radius:999px;
-      background:rgba(0,0,0,.08);
-      -webkit-tap-highlight-color:transparent;
-    }
-    .lang-switch span{
-      cursor:pointer;
-      color:var(--fg);
-      padding:4px 6px;
-      border-radius:6px;
-      transition:color .2s, opacity .2s, background .2s;
-      user-select:none;
-    }
-    .lang-switch span.active{
-      color:var(--accent);
-      text-decoration:underline;
-      background:rgba(0,0,0,.12);
-    }
-
-    /* Русский текст */
+    /* Шрифты по языкам */
     .rus{font-family:'Helvetica Neue',Arial,sans-serif;}
-    /* Латышский текст */
     .lv{font-family:'Satoshi',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
 
     .lang-content{display:none}
     .lang-content.active{display:block}
 
-    /* Доп. адаптация */
-    @media (max-width:480px){
-      .logo{top:56px} /* опускаем логотип ниже переключателя */
-      .text{margin-top:16px}
+    /* Мобильная подстройка: опускаем лого ниже переключателя */
+    @media (max-width:600px){
+      .logo{
+        top:calc(env(safe-area-inset-top,0px) + 88px);
+      }
     }
   </style>
 </head>
 <body>
   <div class="logo"><span class="parens">(</span>case<span class="parens">)</span></div>
 
-  <!-- Переключатель языков -->
   <div class="lang-switch" aria-label="language switcher">
     <span class="active" data-lang="en" role="button" tabindex="0">ENG</span> |
     <span data-lang="lv" role="button" tabindex="0">LV</span> |
     <span data-lang="ru" role="button" tabindex="0">RUS</span>
   </div>
 
-  <!-- 404 -->
   <h1 class="error">404</h1>
 
-  <!-- Английский -->
+  <!-- EN -->
   <div class="text lang-content active en">
     <strong>This space is under creative construction.</strong>
     We’re currently updating our website to make it as bright and bold as our ideas.<br><br>
@@ -138,7 +140,7 @@
     or drop us an email at hello@casecreativestudio.lv.
   </div>
 
-  <!-- Русский -->
+  <!-- RU -->
   <div class="text lang-content rus ru">
     <strong>Это пространство находится на креативной реконструкции.</strong>
     Сейчас мы обновляем сайт, чтобы он выглядел так же ярко, как наши идеи.<br><br>
@@ -147,7 +149,7 @@
     или написать на hello@casecreativestudio.lv.
   </div>
 
-  <!-- Латышский -->
+  <!-- LV -->
   <div class="text lang-content lv">
     <strong>Šī telpa pašlaik atrodas radošā rekonstrukcijā.</strong>
     Mēs atjaunojam mājaslapu, lai tā izskatītos tikpat spilgti kā mūsu idejas.<br><br>
@@ -159,12 +161,10 @@
   <script>
     const switchers=document.querySelectorAll('.lang-switch span');
     const contents=document.querySelectorAll('.lang-content');
-
     function activate(lang){
       switchers.forEach(s=>s.classList.toggle('active',s.dataset.lang===lang));
       contents.forEach(c=>c.classList.toggle('active',c.classList.contains(lang)));
     }
-
     switchers.forEach(sw=>{
       sw.addEventListener('click',()=>activate(sw.dataset.lang));
       sw.addEventListener('keydown',(e)=>{
