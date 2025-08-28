@@ -2,97 +2,167 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CASE Creative Studio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Подключим Google Fonts, если Satoshi недоступен -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <title>Case Creative Studio</title>
   <style>
     body {
       margin: 0;
+      padding: 0;
+      background-color: #EB4D2C; /* фон из макета */
+      color: #FFFFFF;
+      font-family: 'Satoshi', sans-serif;
       height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
-      background-color: #EB4D2C; /* фон */
-      font-family: 'Satoshi', 'Inter', sans-serif;
-      overflow: hidden;
-    }
-
-    .container {
-      transform: rotate(60deg); /* поворот макета */
-      width: 1440px;
-      height: 700px;
-      display: flex;
+      align-items: center;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
       text-align: center;
+      position: relative;
     }
 
+    /* Логотип */
     .logo {
-      font-size: 28px;
-      font-weight: 700;
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Satoshi', sans-serif;
+      font-size: 32px;
+      font-weight: bold;
       color: #FCFAA6;
-      margin-bottom: 60px;
     }
 
-    .title {
+    /* 404 */
+    .error {
+      font-family: 'Satoshi', sans-serif;
       font-size: 250px;
-      font-weight: 700;
+      font-weight: bold;
       line-height: 110%;
       color: #FCFAA6;
-      margin: 0 0 40px 0;
+      margin: 0;
     }
 
-    .subtitle {
+    /* Блок текста */
+    .text {
+      max-width: 1038px;
+      margin: 20px auto;
+      font-size: 25px;
+      line-height: 110%;
+    }
+
+    .text strong {
       font-size: 35px;
       font-weight: 500;
-      line-height: 110%;
-      color: #FFFFFF;
+      display: block;
       margin-bottom: 20px;
     }
 
-    .text {
-      font-size: 25px;
-      font-weight: 500;
-      line-height: 110%;
+    /* Ссылки */
+    a {
       color: #FFFFFF;
-      max-width: 80%;
-      margin: 0 auto 20px auto;
-    }
-
-    .links {
-      font-size: 25px;
-      font-weight: 500;
-      line-height: 110%;
-      color: #FFFFFF;
-    }
-
-    .links a {
-      color: #FFFFFF;
-      text-decoration: underline;
+      text-decoration: none;
       transition: opacity 0.2s;
     }
 
-    .links a:hover {
+    a:hover {
       opacity: 0.7;
     }
+
+    /* Переключатель языков */
+    .lang-switch {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 20px;
+      font-weight: 500;
+      display: flex;
+      gap: 10px;
+    }
+
+    .lang-switch span {
+      cursor: pointer;
+      color: #FFFFFF;
+      transition: color 0.2s, opacity 0.2s;
+    }
+
+    .lang-switch span.active {
+      color: #FCFAA6; /* жёлтый */
+      text-decoration: underline; /* подчёркивание */
+    }
+
+    /* Русский текст — Helvetica Neue */
+    .rus {
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    /* Латышский текст — Satoshi (по умолчанию) */
+    .lv {
+      font-family: 'Satoshi', sans-serif;
+    }
+
+    /* По умолчанию показываем английский */
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="logo">(CASE)</div>
-    <div class="title">404</div>
-    <div class="subtitle">This space is under creative construction.</div>
-    <div class="text">
-      We’re currently updating our website to make it as bright and bold as our ideas.
-    </div>
-    <div class="links">
-      In the meantime, feel free to check out our 
-      <a href="https://www.instagram.com/case.creativestudio/" target="_blank">Instagram</a> 
-      or drop us an email at 
-      <a href="mailto:hello@casecreativestudio.lv">hello@casecreativestudio.lv</a>.
-    </div>
+  <div class="logo">(CASE)</div>
+
+  <!-- Переключатель языков -->
+  <div class="lang-switch">
+    <span class="active" data-lang="en">ENG</span> |
+    <span data-lang="lv">LV</span> |
+    <span data-lang="ru">RUS</span>
   </div>
+
+  <!-- 404 -->
+  <h1 class="error">404</h1>
+
+  <!-- Английский -->
+  <div class="text lang-content active en">
+    <strong>This space is under creative construction.</strong>
+    We’re currently updating our website to make it as bright and bold as our ideas.<br><br>
+    In the meantime, feel free to check out our 
+    <a href="https://www.instagram.com/case.creativestudio/" target="_blank">Instagram</a> 
+    or drop us an email at 
+    <a href="mailto:hello@casecreativestudio.lv">hello@casecreativestudio.lv</a>.
+  </div>
+
+  <!-- Русский -->
+  <div class="text lang-content rus ru">
+    <strong>Это пространство находится на креативной реконструкции.</strong>
+    Сейчас мы обновляем сайт, чтобы он выглядел так же ярко, как наши идеи.<br><br>
+    А пока можно заглянуть в наш 
+    <a href="https://www.instagram.com/case.creativestudio/" target="_blank">Instagram</a> 
+    или написать на 
+    <a href="mailto:hello@casecreativestudio.lv">hello@casecreativestudio.lv</a>.
+  </div>
+
+  <!-- Латышский -->
+  <div class="text lang-content lv">
+    <strong>Šī telpa pašlaik atrodas radošā rekonstrukcijā.</strong>
+    Mēs atjaunojam mājaslapu, lai tā izskatītos tikpat spilgti kā mūsu idejas.<br><br>
+    Tikmēr var ieskatīties mūsu 
+    <a href="https://www.instagram.com/case.creativestudio/" target="_blank">Instagram</a> 
+    vai uzrakstīt uz 
+    <a href="mailto:hello@casecreativestudio.lv">hello@casecreativestudio.lv</a>.
+  </div>
+
+  <script>
+    const switchers = document.querySelectorAll('.lang-switch span');
+    const contents = document.querySelectorAll('.lang-content');
+
+    switchers.forEach(sw => {
+      sw.addEventListener('click', () => {
+        // снять активность
+        switchers.forEach(s => s.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+
+        // активировать выбранный
+        sw.classList.add('active');
+        const lang = sw.dataset.lang;
+        document.querySelector(`.${lang}`).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
