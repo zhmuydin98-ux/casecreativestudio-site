@@ -1,223 +1,232 @@
-!DOCTYPE html
-html lang=en
-head
-  meta charset=UTF-8 
-  titleCase Creative Studiotitle
-  meta name=viewport content=width=device-width, initial-scale=1 
-  style
-     Базовые стили страницы 
-    root {
-      --bg #EB4D2C;
-      --fg #FFFFFF;
-      --accent #FCFAA6;
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Case Creative Studio — 404</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #EB4D2C;
+      --fg: #FFFFFF;
+      --accent: #FCFAA6;
     }
 
-    html, body {
-      height 100%;
-    }
-
+    html, body { height: 100%; }
     body {
-      margin 0;
-      padding 0;
-      background-color var(--bg);
-      color var(--fg);
-      font-family 'Satoshi', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      min-height 100%;
-      display flex;
-      justify-content center;
-      align-items center;
-      flex-direction column;
-      text-align center;
-      position relative;
-       Фоновое изображение под макет (меняется по языку) 
-      background-repeat no-repeat;
-      background-position center center;
-      background-size cover;
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: Satoshi, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
 
-     Фоны для каждого языка — укажи свои пути к картинкам 
-     1 картинка — RU 
-    body.lang-ru { background-image url('images404_ru.svg'); }
-     2 картинка — EN 
-    body.lang-en { background-image url('images404_en.svg'); }
-     3 картинка — LV 
-    body.lang-lv { background-image url('images404_lv.svg'); }
-
-     Логотип 
+    /* Логотип */
     .logo {
-      position absolute;
-      top 40px;
-      left 50%;
-      transform translateX(-50%);
-      font-family 'Satoshi', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-size 32px;
-      font-weight 700;
-      color var(--accent);
-      letter-spacing 0.2px;
-      user-select none;
-      pointer-events none;
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: 700;
+      font-size: 32px;
+      color: var(--accent);
+      user-select: none;
+      pointer-events: none;
+      letter-spacing: 0.2px;
     }
 
-     404 
-    .error {
-      font-family 'Satoshi', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-size clamp(120px, 22vw, 250px);
-      font-weight 700;
-      line-height 1.1;
-      color var(--accent);
-      margin 0;
-    }
-
-     Блок текста 
-    .text {
-      max-width 1038px;
-      margin 20px auto 0;
-      font-size clamp(18px, 2.2vw, 25px);
-      line-height 1.1;
-      padding 0 20px;
-    }
-
-    .text strong {
-      font-size clamp(22px, 3vw, 35px);
-      font-weight 500;
-      display block;
-      margin-bottom 20px;
-    }
-
-     Ссылки 
-    a {
-      color var(--fg);
-      text-decoration underline;             всегда подчеркнуто 
-      text-underline-offset 2px;
-      transition opacity 0.2s ease;
-    }
-
-    ahover { opacity 0.8; }
-
-     Переключатель языков 
+    /* Переключатель языков */
     .lang-switch {
-      position absolute;
-      top 20px;
-      right 30px;
-      font-size 20px;
-      font-weight 500;
-      display flex;
-      gap 10px;
-      align-items center;
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      display: flex;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 500;
+      align-items: center;
     }
-
     .lang-switch button {
-      cursor pointer;
-      background transparent;
-      border none;
-      color var(--fg);
-      font inherit;
-      padding 0;
-      opacity 0.9;
+      background: transparent;
+      border: 0;
+      color: var(--fg);
+      cursor: pointer;
+      font: inherit;
+      padding: 0;
+      opacity: 0.9;
     }
-
     .lang-switch button.active {
-      color var(--accent);
-      text-decoration underline;
-      text-underline-offset 2px;
-      opacity 1;
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      opacity: 1;
     }
 
-     Русский текст — Helvetica Neue 
-    .rus {
-      font-family 'Helvetica Neue', Arial, sans-serif;
+    /* 404 */
+    .error {
+      margin: 0;
+      color: var(--accent);
+      font-weight: 700;
+      line-height: 1.1;
+      font-size: clamp(120px, 22vw, 250px);
     }
 
-     Латышский текст — Satoshi (по умолчанию) 
-    .lv {
-      font-family 'Satoshi', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    /* Контент */
+    .text {
+      max-width: 1038px;
+      margin: 20px auto 0;
+      font-size: clamp(18px, 2.2vw, 25px);
+      line-height: 1.1;
+      padding: 0 20px;
+    }
+    .text strong {
+      display: block;
+      margin-bottom: 20px;
+      font-weight: 500;
+      font-size: clamp(22px, 3vw, 35px);
     }
 
-     Показскрытие языков 
-    .lang-content { display none; }
-    .lang-content.active { display block; }
-
-     Адаптивные отступы для маленьких экранов 
-    @media (max-width 480px) {
-      .logo { top 22px; font-size 24px; }
-      .lang-switch { top 14px; right 16px; font-size 16px; gap 8px; }
-      .text { padding 0 14px; }
+    /* Ссылки */
+    a {
+      color: var(--fg);
+      text-decoration: underline;         /* всегда подчеркнуто */
+      text-underline-offset: 2px;
+      transition: opacity .2s ease;
     }
-  style
-head
-body class=lang-en
-  div class=logo(CASE)div
+    a:hover { opacity: .8; }
 
-  !-- Переключатель языков --
-  div class=lang-switch role=tablist aria-label=Language switcher
-    !-- Порядок кнопок соотносится с макетами RU, EN, LV --
-    button class=lang-btn data-lang=ru role=tab aria-selected=false aria-controls=content-ruRUSbutton 
-    button class=lang-btn active data-lang=en role=tab aria-selected=true aria-controls=content-enENGbutton 
-    button class=lang-btn data-lang=lv role=tab aria-selected=false aria-controls=content-lvLVbutton
-  div
+    /* Показ/скрытие языков */
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
 
-  !-- 404 --
-  h1 class=error aria-hidden=true404h1
+    /* Русский — Helvetica Neue */
+    .rus { font-family: "Helvetica Neue", Arial, sans-serif; }
+    /* Латышский — Satoshi (по умолчанию) */
+    .lv  { font-family: Satoshi, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
 
-  !-- Английский --
-  div id=content-en class=text lang-content active en
-    strongThis space is under creative construction.strong
-    We’re currently updating our website to make it as bright and bold as our ideas.brbr
+    /* Портфель снизу (инлайн SVG) */
+    .briefcase {
+      position: absolute;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      width: clamp(80px, 14vw, 160px);
+      height: auto;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Адаптив */
+    @media (max-width: 480px) {
+      .logo { top: 22px; font-size: 24px; }
+      .lang-switch { top: 14px; right: 16px; font-size: 16px; gap: 8px; }
+      .text { padding: 0 14px; }
+    }
+  </style>
+</head>
+<body class="lang-en">
+  <div class="logo">(CASE)</div>
+
+  <!-- Переключатель языков -->
+  <div class="lang-switch" role="tablist" aria-label="Language switcher">
+    <button class="lang-btn" data-lang="ru" role="tab" aria-selected="false" aria-controls="content-ru">RUS</button> |
+    <button class="lang-btn active" data-lang="en" role="tab" aria-selected="true" aria-controls="content-en">ENG</button> |
+    <button class="lang-btn" data-lang="lv" role="tab" aria-selected="false" aria-controls="content-lv">LV</button>
+  </div>
+
+  <!-- 404 -->
+  <h1 class="error" aria-hidden="true">404</h1>
+
+  <!-- EN -->
+  <div id="content-en" class="text lang-content active en">
+    <strong>This space is under creative construction.</strong>
+    We’re currently updating our website to make it as bright and bold as our ideas.<br><br>
     In the meantime, feel free to check out our
-    a href=httpswww.instagram.comcase.creativestudio target=_blank rel=noopenerInstagrama
-    or drop us an email at span class=emailhello@casecreativestudio.lvspan.
-  div
+    <a href="https://www.instagram.com/case.creativestudio/" target="_blank" rel="noopener">Instagram</a>
+    or drop us an email at <span class="email">hello@casecreativestudio.lv</span>.
+  </div>
 
-  !-- Русский --
-  div id=content-ru class=text lang-content rus ru lang=ru
-    strongЭто пространство находится на креативной реконструкции.strong
-    Сейчас мы обновляем сайт, чтобы он выглядел так же ярко, как наши идеи.brbr
+  <!-- RU -->
+  <div id="content-ru" class="text lang-content rus ru" lang="ru">
+    <strong>Это пространство находится на креативной реконструкции.</strong>
+    Сейчас мы обновляем сайт, чтобы он выглядел так же ярко, как наши идеи.<br><br>
     А пока можно заглянуть в наш
-    a href=httpswww.instagram.comcase.creativestudio target=_blank rel=noopenerInstagrama
-    или написать на span class=emailhello@casecreativestudio.lvspan.
-  div
+    <a href="https://www.instagram.com/case.creativestudio/" target="_blank" rel="noopener">Instagram</a>
+    или написать на <span class="email">hello@casecreativestudio.lv</span>.
+  </div>
 
-  !-- Латышский --
-  div id=content-lv class=text lang-content lv lang=lv
-    strongŠī telpa pašlaik atrodas radošā rekonstrukcijā.strong
-    Mēs atjaunojam mājaslapu, lai tā izskatītos tikpat spilgti kā mūsu idejas.brbr
+  <!-- LV -->
+  <div id="content-lv" class="text lang-content lv" lang="lv">
+    <strong>Šī telpa pašlaik atrodas radošā rekonstrukcijā.</strong>
+    Mēs atjaunojam mājaslapu, lai tā izskatītos tikpat spilgti kā mūsu idejas.<br><br>
     Tikmēr var ieskatīties mūsu
-    a href=httpswww.instagram.comcase.creativestudio target=_blank rel=noopenerInstagrama
-    vai uzrakstīt uz span class=emailhello@casecreativestudio.lvspan.
-  div
+    <a href="https://www.instagram.com/case.creativestudio/" target="_blank" rel="noopener">Instagram</a>
+    vai uzrakstīt uz <span class="email">hello@casecreativestudio.lv</span>.
+  </div>
 
-  script
+  <!-- Портфельчик снизу (инлайн SVG, цвета из макета) -->
+  <svg class="briefcase" viewBox="0 0 160 120" aria-hidden="true">
+    <!-- Тень слегка темнее акцента, очень мягкая -->
+    <ellipse cx="80" cy="106" rx="56" ry="8" fill="rgba(0,0,0,0.08)"></ellipse>
+    <!-- Корпус -->
+    <rect x="16" y="34" width="128" height="72" rx="10" ry="10" fill="#FCFAA6" stroke="#FCFAA6"></rect>
+    <!-- Крышка (чуть более светлая заливка для аккуратного разделения) -->
+    <rect x="16" y="22" width="128" height="28" rx="10" ry="10" fill="#FFFBD0" stroke="#FCFAA6"></rect>
+    <!-- Ручка -->
+    <path d="M58 22
+             a14 14 0 0 1 44 0
+             v4
+             h-8 v-4
+             a6 6 0 0 0-28 0
+             v4
+             h-8 v-4z"
+          fill="#FCFAA6"></path>
+    <!-- Замок -->
+    <rect x="76" y="58" width="8" height="12" rx="2" fill="#EB4D2C"></rect>
+    <rect x="74" y="66" width="12" height="8" rx="2" fill="#EB4D2C"></rect>
+  </svg>
+
+  <script>
     const buttons = document.querySelectorAll('.lang-btn');
     const blocks  = document.querySelectorAll('.lang-content');
     const body    = document.body;
 
-    const setLang = (lang) = {
-       переключаем активность кнопок
-      buttons.forEach(b = b.classList.toggle('active', b.dataset.lang === lang));
-      buttons.forEach(b = b.setAttribute('aria-selected', String(b.dataset.lang === lang)));
+    function setLang(lang) {
+      // переключение кнопок
+      buttons.forEach(b => {
+        const active = b.dataset.lang === lang;
+        b.classList.toggle('active', active);
+        b.setAttribute('aria-selected', String(active));
+      });
 
-       переключаем контент
-      blocks.forEach(b = b.classList.remove('active'));
-      const active = document.querySelector(`#content-${lang}`);
-      if (active) active.classList.add('active');
+      // переключение контента
+      blocks.forEach(b => b.classList.remove('active'));
+      const activeBlock = document.getElementById(`content-${lang}`);
+      if (activeBlock) activeBlock.classList.add('active');
 
-       переключаем фон
+      // класс на body (если дальше захочешь докрутить стили по языку)
       body.classList.remove('lang-en', 'lang-ru', 'lang-lv');
       body.classList.add(`lang-${lang}`);
-    };
+    }
 
-     Инициализируем EN по умолчанию
+    // Инициализация
     setLang('en');
 
-    buttons.forEach(b = {
-      b.addEventListener('click', () = setLang(b.dataset.lang));
-      b.addEventListener('keydown', (e) = {
-        if (e.key === 'Enter'  e.key === ' ') {
+    // Слушатели
+    buttons.forEach(b => {
+      b.addEventListener('click', () => setLang(b.dataset.lang));
+      b.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           setLang(b.dataset.lang);
         }
       });
     });
-  script
-body
-html
+  </script>
+</body>
+</html>
