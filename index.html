@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Case Creative Studio</title>
   <style>
-    /* Базовая сетка */
     :root{
       --bg:#EB4D2C;
       --fg:#FFFFFF;
@@ -18,14 +17,14 @@
       background-color:var(--bg);
       color:var(--fg);
       font-family:'Satoshi',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      min-height:100svh; /* лучше чем 100vh на мобильных */
+      min-height:100svh;
       display:flex;
       justify-content:center;
       align-items:center;
       flex-direction:column;
       text-align:center;
       position:relative;
-      padding:24px 16px; /* чтобы контент не прилипал к краям на мобильных */
+      padding:24px 16px;
     }
 
     /* Логотип */
@@ -39,6 +38,11 @@
       color:var(--accent);
       letter-spacing:0.02em;
     }
+    /* Скобки в логотипе уменьшены */
+    .logo .parens{
+      font-size:0.8em; /* скобки становятся ниже */
+      vertical-align:middle;
+    }
 
     /* 404 */
     .error{
@@ -46,7 +50,7 @@
       line-height:1.1;
       color:var(--accent);
       margin:0;
-      font-size:clamp(72px,18vw,250px); /* масштабируется */
+      font-size:clamp(72px,18vw,250px);
     }
 
     /* Текстовые блоки */
@@ -65,14 +69,8 @@
     }
 
     /* Ссылки */
-    a{
-      color:var(--fg);
-      text-decoration:none;
-      transition:opacity .2s;
-    }
+    a{color:var(--fg);text-decoration:none;transition:opacity .2s}
     a:hover{opacity:.7}
-
-    /* Подчеркнутый Instagram */
     .insta-link{text-decoration:underline}
 
     /* Переключатель языков */
@@ -86,13 +84,13 @@
       gap:10px;
       padding:8px 10px;
       border-radius:999px;
-      background:rgba(0,0,0,.08); /* легкий фон для читабельности на мобилках */
+      background:rgba(0,0,0,.08);
       -webkit-tap-highlight-color:transparent;
     }
     .lang-switch span{
       cursor:pointer;
       color:var(--fg);
-      padding:4px 6px; /* больше тач-таргет */
+      padding:4px 6px;
       border-radius:6px;
       transition:color .2s, opacity .2s, background .2s;
       user-select:none;
@@ -103,24 +101,23 @@
       background:rgba(0,0,0,.12);
     }
 
-    /* Русский текст — Helvetica Neue */
+    /* Русский текст */
     .rus{font-family:'Helvetica Neue',Arial,sans-serif;}
-    /* Латышский — Satoshi (по умолчанию) */
+    /* Латышский текст */
     .lv{font-family:'Satoshi',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
 
-    /* По умолчанию показываем английский */
     .lang-content{display:none}
     .lang-content.active{display:block}
 
-    /* Доп. правки для небольших экранов */
+    /* Доп. адаптация */
     @media (max-width:480px){
-      .logo{top:16px}
+      .logo{top:56px} /* опускаем логотип ниже переключателя */
       .text{margin-top:16px}
     }
   </style>
 </head>
 <body>
-  <div class="logo">(case)</div>
+  <div class="logo"><span class="parens">(</span>case<span class="parens">)</span></div>
 
   <!-- Переключатель языков -->
   <div class="lang-switch" aria-label="language switcher">
@@ -160,18 +157,18 @@
   </div>
 
   <script>
-    const switchers = document.querySelectorAll('.lang-switch span');
-    const contents = document.querySelectorAll('.lang-content');
+    const switchers=document.querySelectorAll('.lang-switch span');
+    const contents=document.querySelectorAll('.lang-content');
 
     function activate(lang){
-      switchers.forEach(s => s.classList.toggle('active', s.dataset.lang === lang));
-      contents.forEach(c => c.classList.toggle('active', c.classList.contains(lang)));
+      switchers.forEach(s=>s.classList.toggle('active',s.dataset.lang===lang));
+      contents.forEach(c=>c.classList.toggle('active',c.classList.contains(lang)));
     }
 
-    switchers.forEach(sw => {
-      sw.addEventListener('click', () => activate(sw.dataset.lang));
-      sw.addEventListener('keydown', (e) => {
-        if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(sw.dataset.lang); }
+    switchers.forEach(sw=>{
+      sw.addEventListener('click',()=>activate(sw.dataset.lang));
+      sw.addEventListener('keydown',(e)=>{
+        if(e.key==='Enter'||e.key===' '){e.preventDefault();activate(sw.dataset.lang);}
       });
     });
   </script>
